@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>File Upload</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+</head>
+<body>
+    <section class="py-5 text-center container">
+        <div class="row py-lg-5">
+            <div class="col-lg-6 col-md-8 mx-auto">
+                <h1 class="fw-light">File Upload</h1>
+                <hr>
+                <form action="http://127.0.0.1:5000/" method="POST" enctype="multipart/form-data">
+                    <div class="mb-3">
+                        <label for="image" class="form-label">Image</label>
+                        <input type="file" accept="image/*" id="imgInput" name="post_image" class="form-control">
+                        <img id="previewImg" class="img-fluid rounded">
+                    </div>
+                    <button class="btn btn-success" type="submit" name="create" onclick="window.open('original.html')">Create</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        let imgInput = document.querySelector("#imgInput");
+        let previewImg = document.querySelector("#previewImg");
+    
+        imgInput.onchange = evt => {
+            const [file] = imgInput.files;
+            if (file) {
+                previewImg.src = URL.createObjectURL(file);
+            }
+        }
+    </script>
+    
+
+</body>
+</html>
